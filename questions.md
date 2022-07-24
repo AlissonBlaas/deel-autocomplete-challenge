@@ -6,6 +6,8 @@
 
 2. Context + ShouldComponentUpdate might be dangerous. Can think of why is that?
 
+   - context is used to communicated deeply to the components, and shouldcomponentupdate can block the context propagation
+
 3. Describe 3 ways to pass information from a component to its PARENT.
 
 - as a props to the child component, using any global management state
@@ -38,6 +40,46 @@
   </>
 
 6.  Give 3 examples of the HOC pattern.
+
+    - you can use an HOC with to loading a users list.
+
+      - You will create the component
+
+        function UserList({ users }) {
+        return (
+        <section>
+        {users.map((user) => <User key={user.id} user={user} />)}
+        </section>
+        );
+        }
+
+      - You will create the HOC WITH LOADING and pass a param to the function like WrappedComponend
+
+        function UserList(WrappedComponent) {
+        return class extends React.Component {
+        render() {
+        return this.props.users.length === 0 //note: this part is getting by wrappedComponent
+        ? <Loading />
+        : <WrappedComponent {...props} />
+        }
+        }
+        }
+
+      - and in your component, you will export the component with HOC like LoadingHOC(ListUsers)
+
+      ```
+            function UserList({ users }) {
+                return (
+                    <section>
+                        {users.map((user) => <User key={user.id} user={user} />)}
+                    </section>
+                );
+            }
+
+            export default LoadingHOC(ListUsers);
+      ```
+
+      - When you import this component, they will import normaly
 
 7.  what's the difference in handling exceptions in promises, callbacks and async...await.
 
