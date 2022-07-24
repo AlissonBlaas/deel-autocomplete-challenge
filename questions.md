@@ -186,7 +186,8 @@
     ```
 
 10. List a few ways styles can be used with components.
-    scss, inline-css, css in js, external css style
+
+    - scss, inline-css, css in js, external css style
 
 11. How to render an HTML string coming from the server.
 
