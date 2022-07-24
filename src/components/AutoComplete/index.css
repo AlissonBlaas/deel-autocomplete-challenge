@@ -54,6 +54,8 @@ li {
   flex-direction: column;
   background-color: #ffff;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  max-height: 200px;
+  overflow: auto;
 }
 
 .list-item {
