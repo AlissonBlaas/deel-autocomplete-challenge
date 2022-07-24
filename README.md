@@ -8,9 +8,11 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-# To open questios
+## To open questios
 
-questions.md: [a link](https://github.com/AlissonBlaas/deel-autocomplete-challenge/blob/main/questions.md)
+[Questions](https://github.com/AlissonBlaas/deel-autocomplete-challenge/blob/main/questions.md)
+
+## Running app
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
