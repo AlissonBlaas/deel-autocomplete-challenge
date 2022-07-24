@@ -1,48 +1,48 @@
-1. What is the difference between Component and PureComponent? give an example where it might break my app.
+1.  What is the difference between Component and PureComponent? give an example where it might break my app.
 
-- React.Purecomponent the children only will rerender if they props pass through then, changes.
-- React.Component the children will aways rerender with if parente rerender
-- React.Component this method doesn't implement shouldComponentUpdate but PureComponent do
+    - React.Purecomponent the children only will rerender if they props pass through then, changes.
+    - React.Component the children will aways rerender with if parente rerender
+    - React.Component this method doesn't implement shouldComponentUpdate but PureComponent do
 
-2. Context + ShouldComponentUpdate might be dangerous. Can think of why is that?
+2.  Context + ShouldComponentUpdate might be dangerous. Can think of why is that?
 
-   - context is used to communicated deeply to the components, and shouldcomponentupdate can block the context propagation
+    - context is used to communicated deeply to the components, and shouldcomponentupdate can block the context propagation
 
-3. Describe 3 ways to pass information from a component to its PARENT.
+3.  Describe 3 ways to pass information from a component to its PARENT.
 
-- as a props to the child component, using any global management state
+    - as a props to the child component, using any global management state
 
-4. Give 2 ways to prevent components from re-rendering.
+4.  Give 2 ways to prevent components from re-rendering.
 
-- dont do loop functions, use useEffect in some cases
-- dont use context with shouldComponentUpdate
+    - dont do loop functions, use useEffect in some cases
+    - dont use context with shouldComponentUpdate
 
-5. What is a fragment and why do we need it? Give an example where it might break my app.
+5.  What is a fragment and why do we need it? Give an example where it might break my app.
 
-- fragment is a "div" without properties, its a empty div.
-  a case that could be break the app, is when you have 2 separated divs without any parent div, like:
+    - fragment is a "div" without properties, its a empty div.
+      a case that could be break the app, is when you have 2 separated divs without any parent div, like:
 
-  ```
-      <div>
-          <p>text</p>
-      </div>
-      <div>
-          <p>text2</p>
-      </div>
-  ```
-
-  im this case you will need to use fragment, like:
-
-  ```
-      <>
+      ```
           <div>
-          <p>text</p>
+              <p>text</p>
           </div>
           <div>
-          <p>text2</p>
+              <p>text2</p>
           </div>
-      </>
-  ```
+      ```
+
+      im this case you will need to use fragment, like:
+
+      ```
+          <>
+              <div>
+              <p>text</p>
+              </div>
+              <div>
+              <p>text2</p>
+              </div>
+          </>
+      ```
 
 6.  Give 3 examples of the HOC pattern.
 
