@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <div className="content-card">
-        <AutoComplete label="Auto Complete" data={data} />
+        <AutoComplete placeholder="Search" label="Auto Complete" data={data} />
       </div>
     </div>
   );

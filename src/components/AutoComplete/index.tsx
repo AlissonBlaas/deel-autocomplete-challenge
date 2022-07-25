@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, InputHTMLAttributes } from "react";
 
 import CloseIcon from "../../assets/svgs/close-icon";
 
@@ -8,12 +8,12 @@ interface IData {
   [data: string]: string;
 }
 
-interface IPropsInput {
+interface IPropsInput<T> extends InputHTMLAttributes<T> {
   label?: string;
   data: IData[];
 }
 
-const AutoComplete = ({ label, data }: IPropsInput) => {
+const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
   const [text, setText] = useState("");
   const [suggestions, setSuggestions] = useState<IData[]>([]);
   const [isShowingPaper, setIsShowingPaper] = useState(false);
@@ -46,8 +46,10 @@ const AutoComplete = ({ label, data }: IPropsInput) => {
   };
 
   const openOnClick = () => {
-    setIsShowingPaper(true);
-    setSuggestions(data);
+    if (suggestions.length > 0) {
+      setIsShowingPaper(true);
+      setSuggestions(data);
+    }
   };
 
   return (
@@ -55,10 +57,10 @@ const AutoComplete = ({ label, data }: IPropsInput) => {
       <span>{label}</span>
       <div className="input-search">
         <input
-          alt="auto complete"
           onChange={(event) => onChangeHandler(event)}
           onClick={openOnClick}
           value={text}
+          {...props}
         />
         {text.length > 0 && (
           <CloseIcon
