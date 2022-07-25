@@ -50,8 +50,6 @@ const AutoComplete = ({ label, data }: IPropsInput) => {
     setSuggestions(data);
   };
 
-  console.log(suggestions);
-
   return (
     <div className="input-styled">
       <span>{label}</span>
