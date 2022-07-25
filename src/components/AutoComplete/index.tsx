@@ -46,10 +46,8 @@ const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
   };
 
   const openOnClick = () => {
-    if (suggestions.length > 0) {
-      setIsShowingPaper(true);
-      setSuggestions(data);
-    }
+    setIsShowingPaper(true);
+    setSuggestions(data);
   };
 
   return (
