@@ -14,7 +14,10 @@
 
 4.  Give 2 ways to prevent components from re-rendering.
 
-    - dont do loop functions, use useEffect in some cases
+    - dont do loop functions, use react hooks, like:
+      - useEffect
+      - useMemo
+      - useCallback
     - dont use context with shouldComponentUpdate
 
 5.  What is a fragment and why do we need it? Give an example where it might break my app.
