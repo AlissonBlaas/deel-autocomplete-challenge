@@ -18,15 +18,16 @@ const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
   const [suggestions, setSuggestions] = useState<IData[]>([]);
   const [isShowingPaper, setIsShowingPaper] = useState(false);
 
+  const matches =
+    data &&
+    data.filter((dataFiltered) => {
+      return dataFiltered.email
+        .toLowerCase()
+        .includes(text.toLocaleLowerCase());
+    });
+
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const targetValue = event.target.value;
-    const matches =
-      data &&
-      data.filter((dataFiltered) => {
-        return dataFiltered.email
-          .toLowerCase()
-          .includes(text.toLocaleLowerCase());
-      });
 
     setSuggestions(matches);
     setText(event.target.value);
