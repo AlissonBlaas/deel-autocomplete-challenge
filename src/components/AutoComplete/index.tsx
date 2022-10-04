@@ -15,7 +15,6 @@ interface IPropsInput<T> extends InputHTMLAttributes<T> {
 
 const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
   const [text, setText] = useState("");
-  const [suggestions, setSuggestions] = useState<IData[]>([]);
   const [isShowingPaper, setIsShowingPaper] = useState(false);
 
   const matches =
@@ -29,12 +28,7 @@ const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const targetValue = event.target.value;
 
-    setSuggestions(matches);
-    setText(event.target.value);
-
-    if (targetValue.length <= 0) {
-      setSuggestions(data);
-    }
+    setText(targetValue);
   };
 
   const suggestedText = (value: any) => {
@@ -48,7 +42,6 @@ const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
 
   const openOnClick = () => {
     setIsShowingPaper(true);
-    setSuggestions(data);
   };
 
   return (
@@ -75,8 +68,8 @@ const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
         className="input-list"
         style={{ display: isShowingPaper ? "flex" : "none" }}
       >
-        {suggestions &&
-          suggestions.map((dataFiltered: IData) => (
+        {matches &&
+          matches.map((dataFiltered: IData) => (
             <>
               <li
                 key={dataFiltered.id}
@@ -91,7 +84,7 @@ const AutoComplete = ({ label, data, ...props }: IPropsInput<any>) => {
               </li>
             </>
           ))}
-        {suggestions.length <= 0 && (
+        {matches.length <= 0 && (
           <li className="list-item_empty list-item">No Options</li>
         )}
       </div>
